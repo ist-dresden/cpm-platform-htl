@@ -51,7 +51,6 @@
 
   <modules>
     <module>bundle</module>
-    <module>setup</module>
     <module>package</module>
   </modules>
 </project>
