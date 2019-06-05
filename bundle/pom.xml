@@ -11,11 +11,13 @@
     <artifactId>cpm-platform-models-htl-bundle</artifactId>
     <packaging>bundle</packaging>
 
-    <name>Composum Platform Workflow Bundle</name>
-    <description>Composum Platform Workflow Bundle</description>
+    <name>Composum Platform Models HTL Bundle</name>
+    <description>Bundle containing features for the general use of Models incl. Sling-Models bundled as a
+        package
+    </description>
 
     <properties>
-        <bundle.name>com.composum.platform.workflow</bundle.name>
+        <bundle.name>com.composum.platform.models.htl</bundle.name>
     </properties>
 
     <build>
@@ -65,24 +67,10 @@
             <artifactId>composum-sling-core-commons</artifactId>
         </dependency>
 
-        <!-- EMail... -->
-        <!--dependency>
-            <groupId>com.google.api-client</groupId>
-            <artifactId>google-api-client</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-email</artifactId>
-        </dependency-->
-
         <!-- Apache Sling -->
         <dependency>
             <groupId>org.apache.sling</groupId>
-            <artifactId>org.apache.sling.event.api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.sling</groupId>
-            <artifactId>org.apache.sling.tenant</artifactId>
+            <artifactId>org.apache.sling.scripting.jsp</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.sling</groupId>
@@ -90,11 +78,36 @@
         </dependency>
         <dependency>
             <groupId>org.apache.sling</groupId>
-            <artifactId>org.apache.sling.settings</artifactId>
+            <artifactId>org.apache.sling.commons.osgi</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.sling</groupId>
-            <artifactId>org.apache.sling.commons.osgi</artifactId>
+            <artifactId>org.apache.sling.scripting.sightly</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.sling</groupId>
+            <artifactId>org.apache.sling.scripting.sightly.compiler</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.sling</groupId>
+            <artifactId>org.apache.sling.scripting.sightly.compiler.java</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.sling</groupId>
+            <artifactId>org.apache.sling.scripting.sightly.models.provider</artifactId>
+        </dependency>
+        <dependency>
+            <!-- This needs to be before org.apache.sling.xss in the classpath, since xss embeds an old version of commons-beanutils
+            that isn't even exported, but is incompatible with what's used here. -->
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.sling</groupId>
+            <artifactId>org.apache.sling.xss</artifactId>
+            <!-- Do not export this evil JAR containing loads of embedded dependencies which isn't OSGI exported. -->
+            <scope>test</scope>
+            <optional>true</optional>
         </dependency>
 
         <!-- JCR API, Jackrabbit, VLT -->
@@ -119,21 +132,19 @@
 
         <!-- Apache Commons -->
         <dependency>
-            <groupId>commons-collections</groupId>
-            <artifactId>commons-collections</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
         </dependency>
         <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
         </dependency>
+        <!-- This belongs here, so we mention it, but for technical reasons it needs to be included before sling.xss - see above.
         <dependency>
-            <groupId>commons-codec</groupId>
-            <artifactId>commons-codec</artifactId>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
         </dependency>
+        -->
 
         <!-- OSGi, Felix -->
         <dependency>
@@ -167,8 +178,16 @@
 
         <!-- Web Application API -->
         <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>jsp-api</artifactId>
+        </dependency>
+        <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.geronimo.specs</groupId>
+            <artifactId>geronimo-atinject_1.0_spec</artifactId>
         </dependency>
 
         <!-- Logging -->
@@ -187,6 +206,18 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.sling</groupId>
+            <artifactId>org.apache.sling.testing.sling-mock</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.sling</groupId>
+            <artifactId>org.apache.sling.testing.logging-mock</artifactId>
         </dependency>
 
     </dependencies>
