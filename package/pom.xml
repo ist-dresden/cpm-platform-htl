@@ -55,7 +55,7 @@
 
                     <filters>
                         <filter>
-                            <root>/conf/composum/platform/xxx</root>
+                            <root>/libs/composum/platform/models/htl</root>
                         </filter>
                         <filter>
                             <root>/libs/composum/platform/install</root>

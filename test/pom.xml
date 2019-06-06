@@ -53,10 +53,10 @@
 
                     <filters>
                         <filter>
-                            <root>/conf/composum/platform/workflow/test</root>
+                            <root>/apps/composum/test/platform/models/htl</root>
                         </filter>
                         <filter>
-                            <root>/apps/composum/platform/workflow/test</root>
+                            <root>/content/test/composum/platform/models/htl</root>
                         </filter>
                     </filters>
 
