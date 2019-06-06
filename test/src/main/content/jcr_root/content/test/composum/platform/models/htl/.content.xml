@@ -1,3 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
-        jcr:primaryType="sling:Folder"/>
+<jcr:root xmlns:cpp="http://sling.composum.com/pages/1.0"
+          xmlns:jcr="http://www.jcp.org/jcr/1.0"
+          xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+          xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+          jcr:primaryType="cpp:Site"
+          jcr:mixinTypes="[rep:AccessControllable]">
+    <jcr:content
+            jcr:primaryType="cpp:SiteConfiguration"
+            sling:resourceType="composum/pages/stage/edit/site"
+            publicMode="inPlace"
+            template="">
+        <cpl:releases
+                jcr:primaryType="nt:unstructured"/>
+        <style
+                jcr:primaryType="nt:unstructured"
+                category.edit="sites.ist.website.edit"
+                category.view="sites.ist.website.view"/>
+        <languages
+                jcr:primaryType="nt:unstructured">
+            <english
+                    jcr:primaryType="nt:unstructured"
+                    key="en"
+                    label="english"/>
+            <german
+                    jcr:primaryType="nt:unstructured"
+                    key="de"
+                    label="deutsch"/>
+        </languages>
+    </jcr:content>
+    <htlsearchfield/>
+</jcr:root>

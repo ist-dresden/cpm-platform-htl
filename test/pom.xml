@@ -12,7 +12,7 @@
     <artifactId>cpm-platform-models-htl-test-package</artifactId>
     <packaging>content-package</packaging>
 
-    <name>Composum Platform Workflow Package Test</name>
+    <name>Composum Platform Models HTL Test Package</name>
 
     <build>
         <resources>

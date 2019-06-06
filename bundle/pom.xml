@@ -32,8 +32,7 @@
                         <Bundle-Category>${bundle.category}</Bundle-Category>
                         <Bundle-SymbolicName>${bundle.name}</Bundle-SymbolicName>
                         <Include-Resource>{maven-resources}</Include-Resource>
-                        <Export-Package>!com.composum.platform.workflow.*.impl,
-                            com.composum.platform.workflow.*</Export-Package>
+                        <Export-Package>com.composum.platform.models.htl.*</Export-Package>
                         <Import-Package>org.apache.felix.shell;resolution:=optional,
                             javax.annotation.*;version="[0,4)",
                             *</Import-Package>
