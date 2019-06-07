@@ -10,8 +10,6 @@
             sling:resourceType="composum/pages/stage/edit/site"
             publicMode="inPlace"
             template="">
-        <cpl:releases
-                jcr:primaryType="nt:unstructured"/>
         <style
                 jcr:primaryType="nt:unstructured"
                 category.edit="sites.ist.website.edit"

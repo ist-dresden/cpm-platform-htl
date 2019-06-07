@@ -18,7 +18,11 @@ import javax.servlet.http.HttpSession;
 /**
  * Allows reading something from request- or session-attributes or the {@link EmulatedPageContext} with a data-sly-use
  * statement such that the IDE knows the specific class. Since the retrieved value can be a model, the priority of this
- * needs to be higher than the models use providers.
+ * needs to be higher than the models use providers. This use provider takes over whenever the {@value #PARAM_SCOPE} paraeter is present. Usage example:
+ * <code>
+ * &lt;sly data-sly-use.searchresult="${'com.composum.pages.commons.service.search.SearchService.Result' @ fromScope='request',
+ * key='searchresult'}"/&gt:
+ * </code>
  *
  * @author Hans-Peter Stoerr
  * @since 09/2017
@@ -79,10 +83,10 @@ public class AttributesUseProvider implements UseProvider {
             Object value = getAttribute(renderContext, scope, rawKey.toString(), rawValue);
             if (null == value) {
                 String scriptName = EmulatedPageContext.scriptName(renderContext.getBindings());
-                LOG.warn("Could not find key {} in {}", rawKey, rawScope);
-                return ProviderOutcome.failure(
-                        new IllegalStateException("Could not find key " + rawKey + " in " + rawScope + " for " +
-                                scriptName));
+                LOG.info("Could not find key {} in {} for {}", rawKey, rawScope, scriptName);
+                return ProviderOutcome.success(null);
+                // other alternative would be this, but that somewhat collides with the HTL philosophy of being null-lenient:
+                // return ProviderOutcome.failure( new IllegalStateException("Could not find key " + rawKey + " in " + rawScope + " for " + scriptName));
             }
             return ProviderOutcome.success(value);
         }
