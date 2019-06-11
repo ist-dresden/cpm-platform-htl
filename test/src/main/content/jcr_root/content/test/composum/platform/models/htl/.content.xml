@@ -11,9 +11,7 @@
             publicMode="inPlace"
             template="">
         <style
-                jcr:primaryType="nt:unstructured"
-                category.edit="sites.ist.website.edit"
-                category.view="sites.ist.website.view"/>
+                jcr:primaryType="nt:unstructured"/>
         <languages
                 jcr:primaryType="nt:unstructured">
             <english
