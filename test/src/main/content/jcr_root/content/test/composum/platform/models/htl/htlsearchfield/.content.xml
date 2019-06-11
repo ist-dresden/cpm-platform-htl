@@ -17,7 +17,7 @@
                         sling:resourceType="composum/pages/components/container/row/column"
                         allowedElements="[
                             ^(/[^/]+/)?composum/pages/components/(element|composed|search|test)/.*$,
-                            ^(/[^/]+/)?composum/test/platform/models/htl/components/.*$
+                            ^(/[^/]+/)?test/composum/platform/models/htl/components/.*$
                         ]">
                     <text-1
                             jcr:primaryType="cpp:Element"
@@ -28,15 +28,15 @@
                     />
                     <htlsearchfield
                             jcr:primaryType="nt:unstructured"
-                            sling:resourceType="composum/test/platform/models/htl/components/search/field"
+                            sling:resourceType="test/composum/platform/models/htl/components/search/field"
                             buttonImage=""
                             buttonText="Search"
                             placeholderText="(HTL) : Please enter the search terms."
                             searchResultPath="/content/test/composum/platform/models/htl/htlsearchfield"/>
                     <htlsearchresult
                             jcr:primaryType="nt:unstructured"
-                            sling:resourceType="composum/test/platform/models/htl/components/search/result"
-                            template="composum/test/platform/models/htl/components/search/defaulttemplate"
+                            sling:resourceType="test/composum/platform/models/htl/components/search/result"
+                            template="test/composum/platform/models/htl/components/search/defaulttemplate"
                             pagesize="4" headFormatted="Search result presented via HTL"
                             searchRoot="/content"/>
                     <text-2

@@ -53,7 +53,7 @@
 
                     <filters>
                         <filter>
-                            <root>/apps/composum/test/platform/models/htl</root>
+                            <root>/apps/test/composum/platform/models/htl</root>
                         </filter>
                         <filter>
                             <root>/content/test/composum/platform/models/htl</root>

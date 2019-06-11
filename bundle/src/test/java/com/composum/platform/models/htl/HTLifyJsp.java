@@ -1,11 +1,13 @@
 package com.composum.platform.models.htl;
 
+import org.apache.commons.io.Charsets;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.text.WordUtils;
 
 import java.io.File;
 import java.io.FileReader;
+import java.nio.charset.Charset;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -19,7 +21,7 @@ public class HTLifyJsp {
     public static void main(String[] args) throws Exception {
         // String file = IOUtils.toString(new FileReader(new File("/xxx/yyy.jsp")));
         System.out.println("Please paste the JSP content into standard input.");
-        String file = IOUtils.toString(System.in);
+        String file = IOUtils.toString(System.in, Charsets.UTF_8);
 
         {
             // </cpp:editDialog>
