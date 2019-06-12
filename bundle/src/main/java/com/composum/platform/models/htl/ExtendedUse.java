@@ -1,5 +1,6 @@
 package com.composum.platform.models.htl;
 
+import com.composum.platform.models.htl.impl.ExtendedJavaUseProvider;
 import org.apache.sling.scripting.sightly.render.RenderContext;
 
 import javax.script.Bindings;

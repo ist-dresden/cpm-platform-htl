@@ -60,7 +60,39 @@ can be used as follows: 
 <sly data-sly-call="${cpp.endElement}"/>
 ```
 
-TODO: how to access the defined variables?
+If needed, the defined variable `field` (which is set in an emulated page context, to be comparable to the JSP mechanisms) from the HTL, it can be read as follows (see 'Further extensions' below): 
+
+```<sly data-sly-use.field="${'com.composum.pages.components.model.search.SearchField' @ fromScope='page', key='field'}"/>```
+
+## Further extensions
+
+### The emulated page context
+
+To enable communication between templates we implements a kind of pagecontext for HTL by putting a map into a request attribute. There are separate maps for each script name - that is, the resource of the script. The emulated page context can be accessed from the Composum tags, or via the AttributesUseProvider (see below).
+
+### Access request / session / page context attributes
+
+The AttributesUseProvider allows reading request- or session-attributes or the EmulatedPageContext with a data-sly-use statement such that the IDE knows the specific class and can provide code-completion etc.  This use provider is activated whenever the "fromScope" paraeter is present. Usage example (reads the search result from a request attribute `searchresult`):
+```
+<sly data-sly-use.searchresult="${'com.composum.pages.commons.service.search.SearchService.Result' @ fromScope='request', key='searchresult'}"/>: 
+```
+Possible scopes (case insensitive) are `bindings` for the script bindings, `page` for the emilated page context, and  `request` and `session`. 
+
+It is also possible to explicitly pass a value with parameter `value` to effect a IDE-visible typecast. (The given value is not changed).
+
+### Setting request / session / page context attributes
+
+The `AttributeHelper` allows setting and reading request-/session-attributes, script bindings or a simulated pageContext (EmulatedPageContext). If there should be something written, the parameter `scope` should be one of `bindings`, `page`, `request`, `session` (page being the emulated page context), and there can be a `key` and `value` parameter to set one value, or an arbitrary number key1, key2, key3 ... and corresponding value1, value2, value3, ... parameters to set the values in that scope. Example:
+
+XXX
+
+It also allows reading request and session attributes by providing maps `requestAttributes` and `sessionAttributes`:
+
+```<sly data-sly-use.attrs="com.composum.platform.models.htl.AttributeHelper">${attrs.requestAttributes['sling.core.current.servletName']}</sly>```
+
+### The `ExtendedUse` interface
+
+To be able to access the org.apache.sling.scripting.sightly.render.RenderContext from models, these can extend the `ExtendedUse` interface.
 
 ## Usage-Patterns
 

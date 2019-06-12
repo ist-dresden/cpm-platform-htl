@@ -1,4 +1,4 @@
-package com.composum.platform.models.htl;
+package com.composum.platform.models.htl.impl;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
@@ -16,20 +16,22 @@ import javax.script.Bindings;
 import javax.servlet.http.HttpSession;
 
 /**
- * Allows reading something from request- or session-attributes or the {@link EmulatedPageContext} with a data-sly-use
- * statement such that the IDE knows the specific class. Since the retrieved value can be a model, the priority of this
- * needs to be higher than the models use providers. This use provider takes over whenever the {@value #PARAM_SCOPE} paraeter is present. Usage example:
+ * Allows reading request- or session-attributes or the {@link EmulatedPageContext} with a data-sly-use
+ * statement such that the IDE knows the specific class and can provide code completion etc.
+ * Since the retrieved value can be a model, the priority of this
+ * needs to be higher than the models use providers. This use provider is activated whenever the {@value #PARAM_SCOPE} paraeter is present. Usage example:
  * <code>
  * &lt;sly data-sly-use.searchresult="${'com.composum.pages.commons.service.search.SearchService.Result' @ fromScope='request',
  * key='searchresult'}"/&gt:
  * </code>
+ * Possible scopes are defined in {@link Scope}.
  *
  * @author Hans-Peter Stoerr
  * @since 09/2017
  */
 @Component(
         service = UseProvider.class,
-        configurationPid = "com.composum.platform.models.htl.AttributesUseProvider",
+        configurationPid = "com.composum.platform.models.htl.impl.AttributesUseProvider",
         property = {
                 Constants.SERVICE_RANKING + ":Integer=97"
         }

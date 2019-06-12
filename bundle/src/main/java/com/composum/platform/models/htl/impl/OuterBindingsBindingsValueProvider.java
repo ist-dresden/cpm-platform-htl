@@ -1,4 +1,4 @@
-package com.composum.platform.models.htl;
+package com.composum.platform.models.htl.impl;
 
 import org.apache.sling.scripting.api.BindingsValuesProvider;
 import org.osgi.service.component.annotations.Component;

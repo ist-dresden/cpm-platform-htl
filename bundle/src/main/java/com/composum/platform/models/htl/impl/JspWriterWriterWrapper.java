@@ -1,4 +1,4 @@
-package com.composum.platform.models.htl;
+package com.composum.platform.models.htl.impl;
 
 import javax.servlet.jsp.JspWriter;
 import java.io.IOException;

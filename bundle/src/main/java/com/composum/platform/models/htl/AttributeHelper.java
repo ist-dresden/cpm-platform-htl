@@ -1,5 +1,6 @@
 package com.composum.platform.models.htl;
 
+import com.composum.platform.models.htl.impl.EmulatedPageContext;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.scripting.SlingBindings;
 import org.apache.sling.scripting.sightly.Record;

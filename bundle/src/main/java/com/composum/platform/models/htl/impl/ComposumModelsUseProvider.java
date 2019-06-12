@@ -1,9 +1,8 @@
-package com.composum.platform.models.htl;
+package com.composum.platform.models.htl.impl;
 
 import com.composum.sling.core.BeanContext;
 import com.composum.sling.core.SlingBean;
 import org.apache.sling.api.SlingHttpServletRequest;
-import org.apache.sling.api.scripting.SlingBindings;
 import org.apache.sling.commons.classloader.DynamicClassLoaderManager;
 import org.apache.sling.models.factory.ModelFactory;
 import org.apache.sling.scripting.sightly.render.RenderContext;
@@ -33,7 +32,7 @@ import java.util.regex.Pattern;
  */
 @Component(
         service = UseProvider.class,
-        configurationPid = "com.composum.platform.models.htl.ComposumModelsUseProvider",
+        configurationPid = "com.composum.platform.models.htl.impl.ComposumModelsUseProvider",
         property = {
                 Constants.SERVICE_RANKING + ":Integer=96"
         }

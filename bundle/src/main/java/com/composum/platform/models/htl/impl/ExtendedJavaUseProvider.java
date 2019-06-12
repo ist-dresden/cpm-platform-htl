@@ -1,5 +1,6 @@
-package com.composum.platform.models.htl;
+package com.composum.platform.models.htl.impl;
 
+import com.composum.platform.models.htl.ExtendedUse;
 import org.apache.sling.commons.classloader.ClassLoaderWriter;
 import org.apache.sling.scripting.sightly.render.RenderContext;
 import org.apache.sling.scripting.sightly.use.ProviderOutcome;
@@ -12,7 +13,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.script.Bindings;
-import javax.script.SimpleBindings;
 import java.util.regex.Pattern;
 
 /**
@@ -26,7 +26,7 @@ import java.util.regex.Pattern;
  */
 @Component(
         service = UseProvider.class,
-        configurationPid = "com.composum.platform.models.htl.ExtendedJavaUseProvider",
+        configurationPid = "com.composum.platform.models.htl.impl.ExtendedJavaUseProvider",
         property = {
                 Constants.SERVICE_RANKING + ":Integer=91"
         }

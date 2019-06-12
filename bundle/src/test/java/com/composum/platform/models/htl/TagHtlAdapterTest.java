@@ -1,7 +1,7 @@
 package com.composum.platform.models.htl;
 
+import com.composum.platform.models.htl.impl.TagHtlAdapter;
 import com.composum.sling.core.util.ServiceHandle;
-import com.composum.sling.core.util.XSS;
 import com.composum.sling.cpnl.TextTag;
 import org.apache.commons.lang3.reflect.FieldUtils;
 import org.apache.sling.api.resource.Resource;
@@ -17,7 +17,6 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.mockito.Mockito;
-import org.reflections.ReflectionUtils;
 import org.slf4j.Logger;
 
 import javax.script.Bindings;
