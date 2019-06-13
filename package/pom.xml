@@ -86,6 +86,12 @@
             <artifactId>cpm-platform-models-htl-bundle</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.composum.sling.core</groupId>
+            <artifactId>composum-sling-core-commons</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
 
     </dependencies>
     <profiles>
