@@ -72,7 +72,7 @@ To enable communication between templates we implements a kind of pagecontext fo
 
 ### Access request / session / page context attributes
 
-The AttributesUseProvider allows reading request- or session-attributes or the EmulatedPageContext with a data-sly-use statement such that the IDE knows the specific class and can provide code-completion etc.  This use provider is activated whenever the "fromScope" paraeter is present. Usage example (reads the search result from a request attribute `searchresult`):
+The AttributesUseProvider allows reading request- or session-attributes or the EmulatedPageContext with a data-sly-use statement such that the IDE knows the specific class and can provide code-completion etc.  This use provider is activated whenever the "fromScope" parameter is present. Usage example (reads the search result from a request attribute `searchresult`):
 ```
 <sly data-sly-use.searchresult="${'com.composum.pages.commons.service.search.SearchService.Result' @ fromScope='request', key='searchresult'}"/>: 
 ```
@@ -82,11 +82,15 @@ It is also possible to explicitly pass a value with parameter `value` to effect 
 
 ### Setting request / session / page context attributes
 
-The `AttributeHelper` allows setting and reading request-/session-attributes, script bindings or a simulated pageContext (EmulatedPageContext). If there should be something written, the parameter `scope` should be one of `bindings`, `page`, `request`, `session` (page being the emulated page context), and there can be a `key` and `value` parameter to set one value, or an arbitrary number key1, key2, key3 ... and corresponding value1, value2, value3, ... parameters to set the values in that scope. Example:
+The `AttributeHelper` allows setting and reading request-/session-attributes, request parameters, script bindings or a simulated pageContext (EmulatedPageContext)
+since there is no standard HTL way to read, much less set, those. If there should be something written, the parameter `scope` should be one of `bindings`, `page`, `request`, `session` (page being the emulated page context), and there can be a `key` and `value` parameter to set one value, or an arbitrary number key1, key2, key3 ... and corresponding value1, value2, value3, ... parameters to set the values in that scope. Example:
 
-XXX
+```
+<sly data-sly-use.attrs="${'com.composum.platform.models.htl.AttributeHelper' @ scope='page', key='themodel', value=model}"></sly>
+<sly data-sly-use.attrs="${'com.composum.platform.models.htl.AttributeHelper @ scope='page', key1='something', value1=foo", key2='else', value2=bar}"></sly>
+```
 
-It also allows reading request and session attributes by providing maps `requestAttributes` and `sessionAttributes`:
+It also allows reading request and session attributes and the emulated page context by providing maps `requestAttributes` and `sessionAttributes` and `pageContext`:
 
 ```<sly data-sly-use.attrs="com.composum.platform.models.htl.AttributeHelper">${attrs.requestAttributes['sling.core.current.servletName']}</sly>```
 

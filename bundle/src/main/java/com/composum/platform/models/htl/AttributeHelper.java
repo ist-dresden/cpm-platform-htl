@@ -45,8 +45,8 @@ public class AttributeHelper implements ExtendedUse {
             Scope scope = Scope.valueOf(arguments.get(PARAM_SCOPE).toString().toUpperCase());
             for (Map.Entry<String, Object> entry : arguments.entrySet()) {
                 if (entry.getKey().startsWith("key") && KEYPATTERN.matcher(entry.getKey()).matches()) {
-                    setAttribute(scope, bindings.get(entry.getKey()),
-                            bindings.get(entry.getKey().replaceAll("key", "value")));
+                    setAttribute(scope, arguments.get(entry.getKey()),
+                            arguments.get(entry.getKey().replaceAll("key", "value")));
                 }
             }
         }
@@ -130,5 +130,11 @@ public class AttributeHelper implements ExtendedUse {
             }
         };
     }
+
+    /** Provides a HTL readable view of the Bindings. */
+    public Bindings getBindings() {
+        return bindings;
+    }
+
 
 }
