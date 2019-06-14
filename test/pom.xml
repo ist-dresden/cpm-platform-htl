@@ -5,14 +5,14 @@
 
     <parent>
         <groupId>com.composum.platform</groupId>
-        <artifactId>cpm-platform-models-htl</artifactId>
+        <artifactId>cpm-platform-htl</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>cpm-platform-models-htl-test-package</artifactId>
+    <artifactId>cpm-platform-htl-test-package</artifactId>
     <packaging>content-package</packaging>
 
-    <name>Composum Platform Models HTL Test Package</name>
+    <name>Composum Platform HTL Test Package</name>
 
     <build>
         <resources>
@@ -53,10 +53,10 @@
 
                     <filters>
                         <filter>
-                            <root>/apps/test/composum/platform/models/htl</root>
+                            <root>/apps/test/composum/platform/htl</root>
                         </filter>
                         <filter>
-                            <root>/content/test/composum/platform/models/htl</root>
+                            <root>/content/test/composum/platform/htl</root>
                         </filter>
                     </filters>
 

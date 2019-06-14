@@ -10,12 +10,12 @@
     </parent>
 
     <groupId>com.composum.platform</groupId>
-    <artifactId>cpm-platform-models-htl</artifactId>
+    <artifactId>cpm-platform-htl</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>Composum Platform Models HTL</name>
-    <description>Reactor for Models HTL</description>
+    <name>Composum Platform HTL</name>
+    <description>Reactor for Platform HTL</description>
 
     <properties>
         <composum.pages.version>1.0.0-SNAPSHOT</composum.pages.version>

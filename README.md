@@ -86,13 +86,13 @@ The `AttributeHelper` allows setting and reading request-/session-attributes, re
 since there is no standard HTL way to read, much less set, those. If there should be something written, the parameter `scope` should be one of `bindings`, `page`, `request`, `session` (page being the emulated page context), and there can be a `key` and `value` parameter to set one value, or an arbitrary number key1, key2, key3 ... and corresponding value1, value2, value3, ... parameters to set the values in that scope. Example:
 
 ```
-<sly data-sly-use.attrs="${'com.composum.platform.models.htl.AttributeHelper' @ scope='page', key='themodel', value=model}"></sly>
-<sly data-sly-use.attrs="${'com.composum.platform.models.htl.AttributeHelper @ scope='page', key1='something', value1=foo", key2='else', value2=bar}"></sly>
+<sly data-sly-use.attrs="${'com.composum.platform.htl.AttributeHelper' @ scope='page', key='themodel', value=model}"></sly>
+<sly data-sly-use.attrs="${'com.composum.platform.htl.AttributeHelper @ scope='page', key1='something', value1=foo", key2='else', value2=bar}"></sly>
 ```
 
 It also allows reading request and session attributes and the emulated page context by providing maps `requestAttributes` and `sessionAttributes` and `pageContext`:
 
-```<sly data-sly-use.attrs="com.composum.platform.models.htl.AttributeHelper">${attrs.requestAttributes['sling.core.current.servletName']}</sly>```
+```<sly data-sly-use.attrs="com.composum.platform.htl.AttributeHelper">${attrs.requestAttributes['sling.core.current.servletName']}</sly>```
 
 ### The `ExtendedUse` interface
 

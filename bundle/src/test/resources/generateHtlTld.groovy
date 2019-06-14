@@ -26,13 +26,13 @@ tld.tag.each { tag ->
                     + it.type.text().replace('java.lang.','') + ") "
                     + it.description.text().trim())
         }
-        println(' */--><sly data-sly-use.adapter="${\'com.composum.platform.models.htl.TagHtlAdapter\' @ ')
+        println(' */--><sly data-sly-use.adapter="${\'com.composum.platform.htl.impl.TagHtlAdapter\' @ ')
         println("        adapterTagClass='${tag.'tag-class'.text()}'${attribassignments}}\"")
         println("        >\${adapter.doStart}</sly></template>")
         println()
 
         println('<template data-sly-template.end' + StringUtils.capitalize(tagName) +
-                '><sly data-sly-use.adapter="${\'com.composum.platform.models.htl.TagHtlAdapter\' @ ' )
+                '><sly data-sly-use.adapter="${\'com.composum.platform.htl.impl.TagHtlAdapter\' @ ' )
         println("        adapterTagClass='${tag.'tag-class'.text()}'}\">\${adapter.doEnd}</sly></template>")
         println()
         println()
@@ -44,7 +44,7 @@ tld.tag.each { tag ->
                     + it.type.text().replace('java.lang.','') + ") "
                     + it.description.text().trim())
         }
-        println(' */--><sly data-sly-use.adapter="${\'com.composum.platform.models.htl.TagHtlAdapter\' @ ')
+        println(' */--><sly data-sly-use.adapter="${\'com.composum.platform.htl.impl.TagHtlAdapter\' @ ')
         println("        adapterTagClass='${tag.'tag-class'.text()}'${attribassignments}}\"")
         println("        >\${adapter.doStartAndEnd}</sly></template>")
         println()

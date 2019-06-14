@@ -1,0 +1,34 @@
+<sly data-sly-use.cpp="/libs/composum/platform/htl/cppl.html"
+     data-sly-use.cpn="/libs/composum/platform/htl/cpnl.html"/>
+
+<sly data-sly-call="${cpp.defineObjects}"/>
+<sly data-sly-call="${cpp.startEditDialog @ var='result', type='com.composum.pages.components.model.search.SearchField',
+                title='Edit Search Result'}"/>
+<div class="row">
+    <div class="col col-xs-8">
+        <sly data-sly-call="${cpp.widget @ label='Selector', property='selector', type='textfield', i18n='false', rules='optional',
+                        hint='Sling selector which renders a found resource as search result. Default &quot;searchItem&quot;.'}"/>
+    </div>
+    <div class="col col-xs-4">
+        <sly data-sly-call="${cpp.widget @ label='Page size', property='pagesize', type='textfield', i18n='false', rules='optional',
+                        hint='Page size for the shown results.'}"/>
+    </div>
+</div>
+<div class="row">
+    <div class="col col-xs-12">
+        <sly data-sly-call="${cpp.widget @ label='Search Root', property='searchRoot', type='pathfield', i18n='false', rules='optional',
+                        hint='Path where the search starts. Default: site-root.'}"/>
+        <sly data-sly-call="${cpp.widget @ label='Template', property='template', type='textfield', i18n='false', rules='optional',
+                        hint='Template for printing the search results. Takes precedence over selector.'}"/>
+    </div>
+</div>
+<div class="row">
+    <div class="col col-xs-12">
+        <sly data-sly-call="${cpp.widget @ label='Headline', property='headline', type='richtext', i18n='true', rules='optional', height='55px',
+                        hint='The head for the search result used as {@link MessageFormat} with the search expression used as argument {0}.'}"/>
+        <sly data-sly-call="${cpp.widget @ label='Error text', property='searchtermErrorText', type='richtext', i18n='true', rules='optional',
+                        height='100px',
+                        hint='A text to show when the user inputs faulty search terms. Describing the syntax is recommended.'}"/>
+    </div>
+</div>
+<sly data-sly-call="${cpp.endEditDialog}"/>

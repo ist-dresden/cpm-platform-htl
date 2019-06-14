@@ -4,14 +4,14 @@
 
     <parent>
         <groupId>com.composum.platform</groupId>
-        <artifactId>cpm-platform-models-htl</artifactId>
+        <artifactId>cpm-platform-htl</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>cpm-platform-models-htl-package</artifactId>
+    <artifactId>cpm-platform-htl-package</artifactId>
     <packaging>content-package</packaging>
 
-    <name>Composum Platform Models HTL Package</name>
+    <name>Composum Platform HTL Package</name>
 
     <build>
         <resources>
@@ -55,12 +55,12 @@
 
                     <filters>
                         <filter>
-                            <root>/libs/composum/platform/models/htl</root>
+                            <root>/libs/composum/platform/htl</root>
                         </filter>
                         <filter>
                             <root>/libs/composum/platform/install</root>
                             <includes>
-                                <include>.*/cpm-platform-models-htl-bundle.*\.jar</include>
+                                <include>.*/cpm-platform-htl-bundle.*\.jar</include>
                             </includes>
                         </filter>
                     </filters>
@@ -68,7 +68,7 @@
                     <embeddeds>
                         <embedded>
                             <groupId>${project.groupId}</groupId>
-                            <artifactId>cpm-platform-models-htl-bundle</artifactId>
+                            <artifactId>cpm-platform-htl-bundle</artifactId>
                             <target>/libs/composum/platform/install</target>
                         </embedded>
                     </embeddeds>
@@ -83,7 +83,7 @@
         <!-- Package Bundles -->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>cpm-platform-models-htl-bundle</artifactId>
+            <artifactId>cpm-platform-htl-bundle</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

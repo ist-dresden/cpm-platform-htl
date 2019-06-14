@@ -4,20 +4,20 @@
 
     <parent>
         <groupId>com.composum.platform</groupId>
-        <artifactId>cpm-platform-models-htl</artifactId>
+        <artifactId>cpm-platform-htl</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>cpm-platform-models-htl-bundle</artifactId>
+    <artifactId>cpm-platform-htl-bundle</artifactId>
     <packaging>bundle</packaging>
 
-    <name>Composum Platform Models HTL Bundle</name>
+    <name>Composum Platform HTL Bundle</name>
     <description>Bundle containing features for the general use of Models incl. Sling-Models bundled as a
         package
     </description>
 
     <properties>
-        <bundle.name>com.composum.platform.models.htl</bundle.name>
+        <bundle.name>com.composum.platform.htl</bundle.name>
     </properties>
 
     <build>
@@ -32,7 +32,7 @@
                         <Bundle-Category>${bundle.category}</Bundle-Category>
                         <Bundle-SymbolicName>${bundle.name}</Bundle-SymbolicName>
                         <Include-Resource>{maven-resources}</Include-Resource>
-                        <Export-Package>com.composum.platform.models.htl.*</Export-Package>
+                        <Export-Package>com.composum.platform.htl.*</Export-Package>
                         <Import-Package>org.apache.felix.shell;resolution:=optional,
                             javax.annotation.*;version="[0,4)",
                             org.apache.sling.scripting.sightly.render.*;version="[2.1,4)",

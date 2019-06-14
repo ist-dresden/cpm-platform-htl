@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+          jcr:primaryType="cpp:Page">
+    <jcr:content
+            jcr:primaryType="cpp:PageContent"
+            jcr:title="Demo for HTL components - a search page"
+            sling:resourceType="composum/pages/components/page/single">
+        <main
+                jcr:primaryType="cpp:Container"
+                sling:resourceType="composum/pages/components/container/parsys">
+            <row
+                    jcr:primaryType="cpp:Element"
+                    sling:resourceType="composum/pages/components/container/row"
+                    columns="-12-">
+                <column-0
+                        jcr:primaryType="cpp:Container"
+                        sling:resourceType="composum/pages/components/container/row/column"
+                        allowedElements="[
+                            ^(/[^/]+/)?composum/pages/components/(element|composed|search|test)/.*$,
+                            ^(/[^/]+/)?test/composum/platform/htl/components/.*$
+                        ]">
+                    <text-1
+                            jcr:primaryType="cpp:Element"
+                            sling:resourceType="composum/pages/components/element/text"
+                            text="&lt;p>This page contains HTL versions of the search field and search results.&lt;/p>"
+                            textAlignment="left"
+                            title="HTL Search Component Demo"
+                    />
+                    <htlsearchfield
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="test/composum/platform/htl/components/search/field"
+                            buttonImage=""
+                            buttonText="Search"
+                            placeholderText="(HTL) : Please enter the search terms."
+                            searchResultPath="/content/test/composum/platform/htl/htlsearchfield"/>
+                    <htlsearchresult
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="test/composum/platform/htl/components/search/result"
+                            template="test/composum/platform/htl/components/search/defaulttemplate"
+                            pagesize="4" headFormatted="Search result presented via HTL"
+                            searchRoot="/content"/>
+                    <text-2
+                            jcr:primaryType="cpp:Element"
+                            sling:resourceType="composum/pages/components/element/text"
+                            text="Please type in a text fragment and perform a search by pressing the search button."
+                            textAlignment="left"/>
+                </column-0>
+            </row>
+        </main>
+    </jcr:content>
+</jcr:root>
