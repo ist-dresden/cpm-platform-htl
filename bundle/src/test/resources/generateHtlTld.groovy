@@ -2,7 +2,8 @@ import org.apache.commons.lang3.StringUtils
 
 // Script to generate a draft for a "translation" of a tag libary to HTL from its TLD
 
-filename = "/cppl.xml"; // change as needed
+// filename = "META-INF/cpnl.tld"; // change as needed
+filename = "META-INF/cppl.tld"; // change as needed
 def tld = new XmlParser().parse(getClass().getResourceAsStream(filename));
 
 println("<!--/* ")

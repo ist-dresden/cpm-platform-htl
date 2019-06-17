@@ -167,6 +167,26 @@
             <optional>true</optional>
         </dependency>
 
+        <!-- Needed dependencies to run generateHtlTld.groovy by hand. Normally unneccessary.
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy</artifactId>
+            <version>2.5.7</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-xml</artifactId>
+            <version>2.5.7</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.composum.sling.pages</groupId>
+            <artifactId>composum-sling-pages-commons-bundle</artifactId>
+            <scope>test</scope>
+        </dependency>
+        -->
+
     </dependencies>
     <profiles>
 
