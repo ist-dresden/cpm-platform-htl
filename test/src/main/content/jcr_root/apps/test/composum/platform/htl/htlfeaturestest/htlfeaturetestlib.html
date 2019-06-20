@@ -1,0 +1,8 @@
+<!--/* A test library for checking out HTL features  */-->
+
+<template data-sly-template.printResource>Resource as seen from template: ${resource.path}</template>
+
+<template data-sly-template.templateDefiningModel>
+    <sly data-sly-use.externalTemplateDefinedModel="com.composum.platform.models.simple.LoadedModel"></sly>
+    Here the declared identifier externalTemplateDefinedModel is available: ${externalTemplateDefinedModel.path} .
+</template>

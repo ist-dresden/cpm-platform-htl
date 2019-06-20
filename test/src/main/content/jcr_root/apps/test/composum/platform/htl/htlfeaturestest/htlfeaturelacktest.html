@@ -1,0 +1,36 @@
+<html>
+<body>
+<h1>Some features missing from HTL that are problematic for us.</h1>
+
+<h2>A template cannot export variables</h2>
+
+<template data-sly-template.sometemplate>
+    <sly data-sly-use.templateDefinedModel="com.composum.platform.models.simple.LoadedModel"></sly>
+    Within the template we declare an identifier templateDefinedModel: ${templateDefinedModel.path} .
+</template>
+
+<p data-sly-call="${sometemplate}">
+</p>
+
+<p>
+    Outside of the called template the declared identifier templateDefinedModel is no longer
+    available. ${templateDefinedModel.path}
+</p>
+
+<sly data-sly-use.testlib="htlfeaturetestlib.html"></sly>
+
+Current resource: ${resource.path}
+
+<p data-sly-call="${testlib.printResource}">
+</p>
+
+<p data-sly-call="${testlib.templateDefiningModel}">
+</p>
+
+<p>
+    Here the declared identifier externalTemplateDefinedModel is no longer
+    available: ${externalTemplateDefinedModel.path} .
+</p>
+
+</sly>
+</html>
