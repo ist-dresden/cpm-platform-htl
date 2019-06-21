@@ -5,6 +5,8 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.text.WordUtils;
 
+import java.io.File;
+import java.io.FileReader;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -16,9 +18,9 @@ import java.util.regex.Pattern;
 public class HTLifyJsp {
 
     public static void main(String[] args) throws Exception {
-        // String file = IOUtils.toString(new FileReader(new File("/xxx/yyy.jsp")));
-        System.out.println("Please paste the JSP content into standard input.");
-        String file = IOUtils.toString(System.in, Charsets.UTF_8);
+        String file = IOUtils.toString(new FileReader(new File("/Users/hps/dev/composum/cpm-site-composum/app/package/src/main/content/jcr_root/apps/ist/composum/components/documentation/servlet/servlet.jsp")));
+        // System.out.println("Please paste the JSP content into standard input.");
+        // String file = IOUtils.toString(System.in, Charsets.UTF_8);
 
         {
             // </cpp:editDialog>
@@ -93,8 +95,8 @@ public class HTLifyJsp {
 
         System.out.println("<!--/* Translated with " + HTLifyJsp.class.getName() + " */-->");
         System.out.println("<sly data-sly-use.cpp=\"/libs/composum/platform/htl/cppl.html\"\n" +
-                "     data-sly-use.cpn=\"/libs/composum/platform/htl/cpnl.html\"/>\n" +
-                "\n");
+                "     data-sly-use.cpn=\"/libs/composum/platform/htl/cpnl.html\"\n" +
+                "     data-sly-use.cpm=\"/libs/composum/platform/htl/composum.html\"/>\n");
         System.out.println(file);
     }
 
