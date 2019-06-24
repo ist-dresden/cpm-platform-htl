@@ -12,19 +12,31 @@ import org.osgi.service.metatype.annotations.AttributeDefinition;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.lang.model.SourceVersion;
 import javax.script.Bindings;
 import javax.servlet.http.HttpSession;
+import java.util.Arrays;
 
 /**
  * Allows reading request- or session-attributes or the {@link EmulatedPageContext} with a data-sly-use
  * statement such that the IDE knows the specific class and can provide code completion etc.
  * Since the retrieved value can be a model, the priority of this
- * needs to be higher than the models use providers. This use provider is activated whenever the {@value #PARAM_SCOPE} paraeter is present. Usage example:
- * <code>
+ * needs to be higher than the models use providers. This use provider is activated whenever the {@value #PARAM_SCOPE} parameter is present. Possible scopes are defined in {@link Scope}. Usage example:
+ * <pre>
  * &lt;sly data-sly-use.searchresult="${'com.composum.pages.commons.service.search.SearchService.Result' @ fromScope='request',
  * key='searchresult'}"/&gt:
- * </code>
- * Possible scopes are defined in {@link Scope}.
+ * </pre>
+ * If the parameter {@value #PARAM_KEY} is not present, the identifier is used as key. This might make sense if you don't want to
+ * specify the Java class of the value, which is more concise but gives your IDE less power to check:
+ * <pre>
+ * &lt;sly data-sly-use.searchresult="${'searchresult' @ fromScope='request'}"/&gt:
+ * </pre>
+ * This can also be used to give the IDE a clue on the type of some binding. If there is a binding <code>searchresult</code> and you want your IDE
+ * to know about it's type to easily access it's attributes:
+ * <pre>
+ * &lt;sly data-sly-use.searchresult="${'com.composum.pages.commons.service.search.SearchService.Result' @ fromScope='bindings',
+ *  * key='searchresult'}"/&gt:
+ * </pre>
  *
  * @author Hans-Peter Stoerr
  * @since 09/2017
@@ -52,10 +64,11 @@ public class AttributesUseProvider implements UseProvider {
 
     /**
      * Mandatory parameter that determines the scope to read from: lower case string representation of {@link Scope} .
+     * If this parameter isn't present, the {@link AttributesUseProvider} is not used.
      */
     public static final String PARAM_SCOPE = "fromScope";
 
-    /** Parameter for the name of the attribute to read from; mandatory except for scope {@link Scope#VALUE}. */
+    /** If the identifier is a class name, this is the name of the attribute name to read from - otherwise the identifier is taken. */
     public static final String PARAM_KEY = "key";
 
     /** Explicitly given value; mandatory for scope Scope {@link Scope#VALUE}. */
@@ -79,20 +92,44 @@ public class AttributesUseProvider implements UseProvider {
         Object rawScope = arguments.get(PARAM_SCOPE);
         boolean haveScope = null != rawScope && null != rawScope;
         Object rawValue = arguments.get(PARAM_VALUE);
-        if (haveScope && (haveKey || null != rawValue)) {
-            Scope scope = rawScope instanceof Scope ? (Scope) rawScope :
-                    Scope.valueOf(rawScope.toString().toUpperCase());
-            Object value = getAttribute(renderContext, scope, rawKey.toString(), rawValue);
+
+        String scriptName = EmulatedPageContext.getScriptName(renderContext.getBindings());
+        if (haveScope) {
+            Scope scope;
+            try {
+                scope = rawScope instanceof Scope ? (Scope) rawScope :
+                        Scope.valueOf(rawScope.toString().toUpperCase());
+            } catch (IllegalArgumentException e) {
+                return ProviderOutcome.failure(
+                        new IllegalArgumentException("Scope '" + rawScope + "' is not defined. Possible values are: " +
+                                Arrays.asList(Scope.values()) + " for " + scriptName));
+            }
+
+            String key = StringUtils.defaultIfBlank(String.valueOf(rawKey), identifier);
+            Object value = getAttribute(renderContext, scope, key, rawValue);
             if (null == value) {
-                String scriptName = EmulatedPageContext.scriptName(renderContext.getBindings());
                 LOG.info("Could not find key {} in {} for {}", rawKey, rawScope, scriptName);
                 return ProviderOutcome.success(null);
                 // other alternative would be this, but that somewhat collides with the HTL philosophy of being null-lenient:
                 // return ProviderOutcome.failure( new IllegalStateException("Could not find key " + rawKey + " in " + rawScope + " for " + scriptName));
+            } else {
+                if (key != identifier) checkType(value, identifier, scriptName);
             }
             return ProviderOutcome.success(value);
         }
         return ProviderOutcome.failure();
+    }
+
+    protected void checkType(Object value, String identifier, String scriptName) {
+        if (SourceVersion.isName(identifier) && identifier.contains(".")) {
+            try {
+                Class<?> clazz = Class.forName(identifier);
+                if (clazz.isInstance(value))
+                    LOG.warn("Not instance of {} in {} : {}", new Object[]{identifier, scriptName, value});
+            } catch (ClassNotFoundException e) {
+                LOG.warn("Class {} not found in {}", identifier, scriptName);
+            }
+        }
     }
 
     protected SlingHttpServletRequest getRequest(RenderContext renderContext) {

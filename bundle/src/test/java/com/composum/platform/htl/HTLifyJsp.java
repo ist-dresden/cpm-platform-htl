@@ -96,7 +96,7 @@ public class HTLifyJsp {
         System.out.println("<!--/* Translated with " + HTLifyJsp.class.getName() + " */-->");
         System.out.println("<sly data-sly-use.cpp=\"/libs/composum/platform/htl/cppl.html\"\n" +
                 "     data-sly-use.cpn=\"/libs/composum/platform/htl/cpnl.html\"\n" +
-                "     data-sly-use.cpm=\"/libs/composum/platform/htl/composum.html\"/>\n");
+                "     data-sly-use.cpm=\"/libs/composum/platform/htl/composum.html\"></sly>\n");
         System.out.println(file);
     }
 

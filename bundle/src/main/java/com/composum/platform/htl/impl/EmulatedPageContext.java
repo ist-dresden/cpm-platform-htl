@@ -45,7 +45,7 @@ public class EmulatedPageContext implements Use, Record<Object> {
             pageContextMap = new HashMap<>();
             request.setAttribute(REQUESTATTR_PAGECONTEXTMAP, pageContextMap);
         }
-        String scriptName = scriptName(bindings);
+        String scriptName = getScriptName(bindings);
         simulatedPageContext = pageContextMap.get(scriptName);
         if (null == simulatedPageContext) {
             simulatedPageContext = new HashMap<>();
@@ -56,7 +56,7 @@ public class EmulatedPageContext implements Use, Record<Object> {
 //        }
     }
 
-    protected static String scriptName(Bindings bindings) {
+    protected static String getScriptName(Bindings bindings) {
         SlingScriptHelper helper = (SlingScriptHelper) bindings.get(SlingBindings.SLING);
         return helper.getScript().getScriptResource().getPath();
     }
@@ -65,7 +65,7 @@ public class EmulatedPageContext implements Use, Record<Object> {
     public static Map<String, Object> map(Bindings bindings) {
         EmulatedPageContext ctx = new EmulatedPageContext();
         ctx.init(bindings);
-        return ctx.getPageContext();
+        return ctx.asMap();
     }
 
     @Override
@@ -79,7 +79,7 @@ public class EmulatedPageContext implements Use, Record<Object> {
     }
 
     /** Returns the emulated page context as a map. */
-    public Map<String, Object> getPageContext() {
+    public Map<String, Object> asMap() {
         return simulatedPageContext;
     }
 }
