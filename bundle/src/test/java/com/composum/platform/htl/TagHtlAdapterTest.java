@@ -9,6 +9,8 @@ import org.apache.sling.api.scripting.SlingBindings;
 import org.apache.sling.api.scripting.SlingScript;
 import org.apache.sling.api.scripting.SlingScriptHelper;
 import org.apache.sling.commons.classloader.DynamicClassLoaderManager;
+import org.apache.sling.scripting.core.ScriptHelper;
+import org.apache.sling.testing.mock.sling.MockSlingScriptHelper;
 import org.apache.sling.testing.mock.sling.ResourceResolverType;
 import org.apache.sling.testing.mock.sling.junit.SlingContext;
 import org.apache.sling.xss.XSSFilter;
@@ -17,16 +19,21 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.mockito.Mockito;
+import org.reflections.ReflectionUtils;
 import org.slf4j.Logger;
 
 import javax.script.Bindings;
 import javax.script.SimpleBindings;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.lang.reflect.Field;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.CALLS_REAL_METHODS;
 import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.withSettings;
 import static org.slf4j.LoggerFactory.getLogger;
 
 /**
@@ -55,16 +62,18 @@ public class TagHtlAdapterTest {
         bindings.put(SlingBindings.RESPONSE, context.response());
         bindings.put(SlingBindings.LOG, LOG);
         bindings.put(SlingBindings.RESOURCE, resource);
-        SlingScriptHelper scriptHelper = Mockito.spy(context.slingScriptHelper());
+        SlingScriptHelper scriptHelper = context.slingScriptHelper();
         bindings.put(SlingBindings.SLING, scriptHelper);
-        SlingScript slingScript = Mockito.mock(SlingScript.class);
-        doReturn(slingScript).when(scriptHelper).getScript();
+
+        SlingScript slingScript = mock(SlingScript.class);
         when(slingScript.getScriptResource()).thenReturn(resource);
+        ((MockSlingScriptHelper) scriptHelper).setScript(slingScript);
+
         stringWriter = new StringWriter();
         writer = new PrintWriter(stringWriter);
         bindings.put(SlingBindings.OUT, writer);
 
-        context.registerService(XSSFilter.class, Mockito.mock(XSSFilter.class));
+        context.registerService(XSSFilter.class, mock(XSSFilter.class));
         ServiceHandle xssapihandle = (ServiceHandle) FieldUtils.readStaticField(com.composum.sling.core.util.XSS.class, "XSSAPI_HANDLE", true);
         FieldUtils.writeField(xssapihandle, "service", context.registerInjectActivateService(new XSSAPIImpl()), true);
 
