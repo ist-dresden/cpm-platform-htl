@@ -25,38 +25,6 @@
     <dependencyManagement>
         <dependencies>
 
-            <!-- HTL library versions according to Sling Starter 11 -->
-            <dependency><!-- https://mvnrepository.com/artifact/org.apache.sling/org.apache.sling.scripting.sightly -->
-                <groupId>org.apache.sling</groupId>
-                <artifactId>org.apache.sling.scripting.sightly</artifactId>
-                <version>1.0.56-1.4.0</version>
-                <scope>provided</scope>
-            </dependency>
-            <dependency><!-- https://mvnrepository.com/artifact/org.apache.sling/org.apache.sling.scripting.sightly.compiler -->
-                <groupId>org.apache.sling</groupId>
-                <artifactId>org.apache.sling.scripting.sightly.compiler</artifactId>
-                <version>1.0.22-1.4.0</version>
-                <scope>provided</scope>
-            </dependency>
-            <dependency><!-- https://mvnrepository.com/artifact/org.apache.sling/org.apache.sling.scripting.sightly.compiler.java -->
-                <groupId>org.apache.sling</groupId>
-                <artifactId>org.apache.sling.scripting.sightly.compiler.java</artifactId>
-                <version>1.0.26-1.4.0</version>
-                <scope>provided</scope>
-            </dependency>
-            <dependency><!-- https://mvnrepository.com/artifact/org.apache.sling/org.apache.sling.scripting.sightly.models.provider -->
-                <groupId>org.apache.sling</groupId>
-                <artifactId>org.apache.sling.scripting.sightly.models.provider</artifactId>
-                <version>1.0.6</version>
-                <scope>provided</scope>
-            </dependency>
-            <dependency><!-- https://mvnrepository.com/artifact/org.apache.sling/org.apache.sling.commons.compiler -->
-                <groupId>org.apache.sling</groupId>
-                <artifactId>org.apache.sling.commons.compiler</artifactId>
-                <version>2.3.6</version>
-                <scope>provided</scope>
-            </dependency>
-
             <!-- Composum Pages -->
             <dependency>
                 <groupId>com.composum.sling.pages</groupId>
@@ -78,7 +46,7 @@
                 <version>${composum.platform.version}</version>
                 <scope>provided</scope>
             </dependency>
-            
+
             <!-- TODO Temporary workaround for https://issues.apache.org/jira/browse/SLING-8576 . Once that's fixed this
               should be removed. -->
             <dependency>
