@@ -18,7 +18,7 @@
 
     <properties>
         <composum.pages.version>1.0.0-SNAPSHOT</composum.pages.version>
-        <composum.platform.version>1.0.0-SNAPSHOT</composum.platform.version>
+        <composum.platform.version>1.0.2</composum.platform.version>
     </properties>
 
     <dependencyManagement>
