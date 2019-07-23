@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.composum.sling.platform</groupId>
+        <groupId>com.composum.platform</groupId>
         <artifactId>cpm-platform-htl</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
@@ -49,7 +49,7 @@
 
         <!-- Composum Platform -->
         <dependency>
-            <groupId>com.composum.sling.platform</groupId>
+            <groupId>com.composum.platform</groupId>
             <artifactId>composum-platform-models-bundle</artifactId>
         </dependency>
 
@@ -194,7 +194,7 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.composum.sling.pages</groupId>
+            <groupId>com.composum.pages</groupId>
             <artifactId>composum-pages-commons-bundle</artifactId>
             <scope>test</scope>
         </dependency>

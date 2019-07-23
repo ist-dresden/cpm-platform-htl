@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.composum.sling.platform</groupId>
+        <groupId>com.composum.platform</groupId>
         <artifactId>composum-platform</artifactId>
         <version>1.0.2</version>
     </parent>
@@ -18,7 +18,7 @@
 
     <properties>
         <composum.pages.version>1.0.0-SNAPSHOT</composum.pages.version>
-        <composum.platform.version>1.0.2</composum.platform.version>
+        <composum.platform.version>1.0.4</composum.platform.version>
     </properties>
 
     <dependencyManagement>
@@ -26,7 +26,7 @@
 
             <!-- Composum Pages -->
             <dependency>
-                <groupId>com.composum.sling.pages</groupId>
+                <groupId>com.composum.pages</groupId>
                 <artifactId>composum-pages-commons-bundle</artifactId>
                 <version>${composum.pages.version}</version>
                 <scope>provided</scope>
@@ -34,13 +34,13 @@
 
             <!-- Composum Platform -->
             <dependency>
-                <groupId>com.composum.sling.platform</groupId>
+                <groupId>com.composum.platform</groupId>
                 <artifactId>composum-platform-models-bundle</artifactId>
                 <version>${composum.platform.version}</version>
                 <scope>provided</scope>
             </dependency>
             <dependency>
-                <groupId>com.composum.sling.platform</groupId>
+                <groupId>com.composum.platform</groupId>
                 <artifactId>composum-platform-commons-bundle</artifactId>
                 <version>${composum.platform.version}</version>
                 <scope>provided</scope>
