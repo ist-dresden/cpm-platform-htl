@@ -16,6 +16,7 @@ import javax.lang.model.SourceVersion;
 import javax.script.Bindings;
 import javax.servlet.http.HttpSession;
 import java.util.Arrays;
+import java.util.Stack;
 
 /**
  * Allows reading request- or session-attributes or the {@link EmulatedPageContext} with a data-sly-use
@@ -122,13 +123,23 @@ public class AttributesUseProvider implements UseProvider {
 
     protected void checkType(Object value, String identifier, String scriptName) {
         if (SourceVersion.isName(identifier) && identifier.contains(".")) {
-            try {
-                Class<?> clazz = Class.forName(identifier);
-                if (clazz.isInstance(value))
-                    LOG.warn("Not instance of {} in {} : {}", new Object[]{identifier, scriptName, value});
-            } catch (ClassNotFoundException e) {
-                LOG.warn("Class {} not found in {}", identifier, scriptName);
+            if (value != null) {
+                Stack<Class<?>> classes = new Stack<>();
+                classes.push(value.getClass());
+                while (!classes.isEmpty()) {
+                    Class<?> clazz = classes.pop();
+                    if (clazz.getName().equals(identifier)) {
+                        return;
+                    }
+                    if (clazz.getSuperclass() != null) {
+                        classes.push(clazz.getSuperclass());
+                    }
+                    for (Class<?> itf : clazz.getInterfaces()) {
+                        classes.push(itf);
+                    }
+                }
             }
+            LOG.warn("Not instance of {} in {} : {}", new Object[]{identifier, scriptName, value});
         }
     }
 
