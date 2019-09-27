@@ -12,7 +12,7 @@ import javax.script.Bindings;
  * @see org.apache.sling.scripting.sightly.pojo.Use
  * @since 09/2017
  */
-public interface ExtendedUse {
+public interface UseWithRenderContext {
 
     /**
      * <p> Called to initialize the Java object with the current Java Scripting API arguments. </p> <p> This method is

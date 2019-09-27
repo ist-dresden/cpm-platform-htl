@@ -1,6 +1,6 @@
 package com.composum.platform.htl.impl;
 
-import com.composum.platform.htl.ExtendedUse;
+import com.composum.platform.htl.UseWithRenderContext;
 import org.apache.sling.commons.classloader.ClassLoaderWriter;
 import org.apache.sling.scripting.sightly.render.RenderContext;
 import org.apache.sling.scripting.sightly.use.ProviderOutcome;
@@ -18,8 +18,8 @@ import java.util.regex.Pattern;
 /**
  * A HTL {@link org.apache.sling.scripting.sightly.use.UseProvider} similar to the {@link
  * org.apache.sling.scripting.sightly.impl.engine.extension.use.JavaUseProvider} that allows accessing the {@link
- * RenderContext}, too - the constructed Java object has to implement {@link ExtendedUse} with {@link
- * ExtendedUse#init(RenderContext, Bindings)}.
+ * RenderContext}, too - the constructed Java object has to implement {@link UseWithRenderContext} with {@link
+ * UseWithRenderContext#init(RenderContext, Bindings)}.
  *
  * @author Hans-Peter Stoerr
  * @since 09/2017
@@ -61,8 +61,8 @@ public class ExtendedJavaUseProvider implements UseProvider {
 
         try {
             Class<?> cls = classLoaderWriter.getClassLoader().loadClass(identifier);
-            if (ExtendedUse.class.isAssignableFrom(cls)) {
-                ExtendedUse result = (ExtendedUse) cls.newInstance();
+            if (UseWithRenderContext.class.isAssignableFrom(cls)) {
+                UseWithRenderContext result = (UseWithRenderContext) cls.newInstance();
                 result.init(renderContext, arguments);
                 return ProviderOutcome.notNullOrFailure(result);
             }

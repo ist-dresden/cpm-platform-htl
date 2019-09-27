@@ -94,9 +94,9 @@ It also allows reading request and session attributes and the emulated page cont
 
 ```<sly data-sly-use.attrs="com.composum.platform.htl.AttributeHelper">${attrs.requestAttributes['sling.core.current.servletName']}</sly>```
 
-### The `ExtendedUse` interface
+### The `UseWithRenderContext` interface
 
-To be able to access the org.apache.sling.scripting.sightly.render.RenderContext from models, these can extend the `ExtendedUse` interface.
+To be able to access the org.apache.sling.scripting.sightly.render.RenderContext from models, these can extend the `UseWithRenderContext` interface.
 
 ## Usage-Patterns
 

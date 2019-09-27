@@ -21,7 +21,7 @@ import java.util.regex.Pattern;
  * @author Hans-Peter Stoerr
  * @since 09/2017
  */
-public class AttributeHelper implements ExtendedUse {
+public class AttributeHelper implements UseWithRenderContext {
 
     /** Parameter that determines the scope: lower case string representation of {@link Scope}. */
     public static final String PARAM_SCOPE = "scope";
