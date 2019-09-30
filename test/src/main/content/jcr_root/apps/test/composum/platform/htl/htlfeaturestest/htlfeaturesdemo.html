@@ -5,16 +5,13 @@
 <h2>Create a model</h2>
 <p>
     <sly data-sly-use.model="com.composum.platform.models.simple.LoadedModel"></sly>
-    Model class: ${model.class.name}, name: ${model.name}, path: ${model.path}, type: ${model.type},
-    properties: ${model.values.keySet.toString}
+    Model class: ${model.toString}, name: ${model.name}, path: ${model.path}, type: ${model.type},
+    properties: ${model.resource.valueMap.keySet.toString}
 </p>
 
 <h2>AttributeHelper</h2>
 <p data-sly-use.attrs="com.composum.platform.htl.AttributeHelper">
-    ${attrs.requestAttributes.keys}
-</p>
-<p>
-    Request attribute keys: ${attrs.requestAttributes.keySet.toString}<br/>
+    Request attribute keys: ${attrs.requestAttributes.propertyNames.toString}<br/>
     Servlet name: ${attrs.requestAttributes['sling.core.current.servletName']}
 </p>
 

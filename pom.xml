@@ -31,6 +31,12 @@
                 <version>${composum.pages.version}</version>
                 <scope>provided</scope>
             </dependency>
+            <dependency>
+                <groupId>com.composum.pages</groupId>
+                <artifactId>composum-pages-components-bundle</artifactId>
+                <version>${composum.pages.version}</version>
+                <scope>provided</scope>
+            </dependency>
 
             <!-- Composum Platform -->
             <dependency>

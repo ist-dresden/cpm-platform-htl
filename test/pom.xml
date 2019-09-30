@@ -81,6 +81,10 @@
             <groupId>com.composum.pages</groupId>
             <artifactId>composum-pages-commons-bundle</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.composum.pages</groupId>
+            <artifactId>composum-pages-components-bundle</artifactId>
+        </dependency>
 
         <!-- Taglib support -->
         <dependency>

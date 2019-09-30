@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:cpp="http://sling.composum.com/pages/1.0"
+<jcr:root xmlns:cpl="http://sling.composum.com/platform/1.0"
+          xmlns:cpp="http://sling.composum.com/pages/1.0"
           xmlns:jcr="http://www.jcp.org/jcr/1.0"
           xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
           xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
@@ -7,9 +8,10 @@
           jcr:mixinTypes="[rep:AccessControllable]">
     <jcr:content
             jcr:primaryType="cpp:SiteConfiguration"
+            cpl:last-publicMode="inPlace"
             sling:resourceType="composum/pages/stage/edit/site"
             publicMode="inPlace"
-            template="">
+            template="/libs/composum/pages/components/templates/site/test">
         <style
                 jcr:primaryType="nt:unstructured"/>
         <languages
@@ -24,5 +26,6 @@
                     label="deutsch"/>
         </languages>
     </jcr:content>
+    <htlfeaturestest/>
     <htlsearchfield/>
 </jcr:root>
