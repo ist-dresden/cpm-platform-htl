@@ -1,19 +1,18 @@
-<sly data-sly-use.cpp="/libs/composum/platform/htl/cppl.html"
-     data-sly-use.cpn="/libs/composum/platform/htl/cpnl.html"/>
-<sly data-sly-call="${cpp.startElement @ var='model', type='com.composum.pages.components.model.search.SearchResult'}"/>
-<sly data-sly-use.model="${'com.composum.pages.components.model.search.SearchResult' @ fromPageContextKey='model'}"/>
+<!--/* This is the rendering code for this component, wrapped into a JSP containing the necessary composum tags. */-->
+
+<sly data-sly-use.model="${'com.composum.pages.components.model.search.SearchResult' @ fromPageContextKey='model'}"></sly>
 ${model.headFormatted @ context='unsafe'}
 <div data-sly-test="${model.hasError}" class="alert alert-danger" role="alert">${model.searchtermErrorText}</div>
 <sly data-sly-list.result="${model.results}">
     <!--/* Transfer detail information (com.composum.pages.commons.service.search.SearchService.Result) as request attribute
      to renderers. */-->
-    <sly data-sly-use.attributes="${'com.composum.platform.htl.MapCreator' @ key='searchresult', value=result}"/>
+    <sly data-sly-use.attributes="${'com.composum.platform.htl.MapCreator' @ key='searchresult', value=result}"></sly>
     <sly data-sly-test.hasTemplate="${model.template}">
         <sly data-sly-resource="${result.target @ resourceType=model.template, selectors=model.selector,
-        requestAttributes=attributes}"/>
+        requestAttributes=attributes}"></sly>
     </sly>
     <sly data-sly-test="${!hasTemplate}">
-        <sly data-sly-resource="${result.target @ selectors=model.selector, requestAttributes=attributes}"/>
+        <sly data-sly-resource="${result.target @ selectors=model.selector, requestAttributes=attributes}"></sly>
     </sly>
 </sly>
 <nav aria-label="Search result pages">
@@ -38,4 +37,3 @@ ${model.headFormatted @ context='unsafe'}
         </li>
     </ul>
 </nav>
-<sly data-sly-call="${cpp.endElement}"/>

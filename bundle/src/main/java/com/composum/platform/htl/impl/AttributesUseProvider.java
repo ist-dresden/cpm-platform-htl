@@ -106,7 +106,7 @@ public class AttributesUseProvider implements UseProvider {
                                 Arrays.asList(Scope.values()) + " for " + scriptName));
             }
 
-            String key = StringUtils.defaultIfBlank(String.valueOf(rawKey), identifier);
+            String key = StringUtils.defaultIfBlank(rawKey != null ? String.valueOf(rawKey) : null, identifier);
             Object value = getAttribute(renderContext, scope, key, rawValue);
             if (null == value) {
                 LOG.info("Could not find key {} in {} for {}", rawKey, rawScope, scriptName);
