@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jcr:root xmlns:cpp="http://sling.composum.com/pages/1.0"
           xmlns:jcr="http://www.jcp.org/jcr/1.0"
-          xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
           xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
           jcr:primaryType="cpp:Page">
     <jcr:content
@@ -18,8 +17,7 @@
                     columns="-12-">
                 <column-0
                         jcr:primaryType="cpp:Container"
-                        sling:resourceType="composum/pages/components/container/row/column"
-                        allowedElements="[^.+$]">
+                        sling:resourceType="composum/pages/components/container/row/column">
                     <text-1
                             jcr:primaryType="cpp:Element"
                             sling:resourceType="composum/pages/components/element/text"
@@ -49,5 +47,4 @@
             </row>
         </main>
     </jcr:content>
-    <pgcomptest/>
 </jcr:root>

@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 /**
  * HTL Helper that creates a map (this object itself), e.g. for setting attributes in a data-sly-include /
  * data-sly-resource argument requestAttributes. The values are given as parameters <code>key</code> and
- * <value>value</value> or an arbitrary number key1, key2, key3 ... and corresponding value1, value2, value3, ...
+ * <code>value</code> or an arbitrary number key1, key2, key3 ... and corresponding value1, value2, value3, ...
  * parameters to set the values in that scope.
  *
  * @author Hans-Peter Stoerr

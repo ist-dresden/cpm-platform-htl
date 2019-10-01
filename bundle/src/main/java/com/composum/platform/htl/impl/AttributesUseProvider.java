@@ -25,18 +25,18 @@ import java.util.Stack;
  * needs to be higher than the models use providers. This use provider is activated whenever the {@value #PARAM_SCOPE} parameter is present. Possible scopes are defined in {@link Scope}. Usage example:
  * <pre>
  * &lt;sly data-sly-use.searchresult="${'com.composum.pages.commons.service.search.SearchService.Result' @ fromScope='request',
- * key='searchresult'}"/&gt:
+ * key='searchresult'}"/&gt;
  * </pre>
  * If the parameter {@value #PARAM_KEY} is not present, the identifier is used as key. This might make sense if you don't want to
  * specify the Java class of the value, which is more concise but gives your IDE less power to check:
  * <pre>
- * &lt;sly data-sly-use.searchresult="${'searchresult' @ fromScope='request'}"/&gt:
+ * &lt;sly data-sly-use.searchresult="${'searchresult' @ fromScope='request'}"/&gt;
  * </pre>
  * This can also be used to give the IDE a clue on the type of some binding. If there is a binding <code>searchresult</code> and you want your IDE
  * to know about it's type to easily access it's attributes:
  * <pre>
  * &lt;sly data-sly-use.searchresult="${'com.composum.pages.commons.service.search.SearchService.Result' @ fromScope='bindings',
- *  * key='searchresult'}"/&gt:
+ *  * key='searchresult'}"/&gt;
  * </pre>
  *
  * @author Hans-Peter Stoerr
