@@ -24,7 +24,7 @@
     <distributionManagement>
         <site>
             <id>api.public</id>
-            <url>scpexe://istweb.ist-software.com/var/www/composum/api/public/cpm/htl/</url>
+            <url>scpexe://istweb.ist-software.com/var/www/composum/api/public/cpm/htl/develop</url>
         </site>
     </distributionManagement>
 
