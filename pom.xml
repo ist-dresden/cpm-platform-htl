@@ -21,6 +21,31 @@
         <composum.platform.version>1.0.4</composum.platform.version>
     </properties>
 
+    <distributionManagement>
+        <site>
+            <id>api.public</id>
+            <url>scpexe://istweb.ist-software.com/var/www/composum/api/public/cpm/htl/</url>
+        </site>
+    </distributionManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <dependencies>
+                        <dependency><!-- add support for ssh/scp -->
+                            <groupId>org.apache.maven.wagon</groupId>
+                            <artifactId>wagon-ssh-external</artifactId>
+                            <version>3.3.3</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
     <dependencyManagement>
         <dependencies>
 
