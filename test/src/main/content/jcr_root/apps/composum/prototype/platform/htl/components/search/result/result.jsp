@@ -8,5 +8,5 @@
     which may or may not more suitable for web designers. --%>
 <cpp:defineObjects/>
 <cpp:element var="model" type="com.composum.pages.components.model.search.SearchResult" scope="request">
-    <sling:call script="result.html"/>
+    <sling:call script="result.htl.html"/>
 </cpp:element>
