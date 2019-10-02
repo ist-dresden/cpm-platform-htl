@@ -53,10 +53,10 @@
 
                     <filters>
                         <filter>
-                            <root>/apps/test/composum/platform/htl</root>
+                            <root>/apps/composum/prototype/platform/htl</root>
                         </filter>
                         <filter>
-                            <root>/content/test/composum/platform/htl</root>
+                            <root>/content/composum/prototype/platform/htl</root>
                         </filter>
                     </filters>
 
