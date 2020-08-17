@@ -24,7 +24,9 @@ import java.util.Map;
 
 import static com.composum.sling.core.BeanContext.Scope.session;
 
-/** Mocks a {@link PageContext} from the {@link Bindings} of HTL. */
+/**
+ * Mocks a {@link PageContext} from the {@link Bindings} of HTL.
+ */
 public class HtlPageContext extends PageContext {
 
     private static final Logger LOG = LoggerFactory.getLogger(HtlPageContext.class);
@@ -263,12 +265,14 @@ public class HtlPageContext extends PageContext {
 
     @Override
     public void include(String relativeUrlPath) throws ServletException, IOException {
+        getSlingScriptHelper().getRequest().getRequestProgressTracker().log("Including {0}", relativeUrlPath);
         getSlingScriptHelper().include(relativeUrlPath);
     }
 
     @Override
     public void include(String relativeUrlPath, boolean flush) throws ServletException, IOException {
         if (flush) jspWriter.flush();
+        getSlingScriptHelper().getRequest().getRequestProgressTracker().log("Including {0}", relativeUrlPath);
         getSlingScriptHelper().include(relativeUrlPath);
     }
 
@@ -304,7 +308,9 @@ public class HtlPageContext extends PageContext {
         throw new UnsupportedOperationException("Not implemented yet: SimulatedPageContext.getVariableResolver");
     }
 
-    /** Not used, since not instantiated by the container. */
+    /**
+     * Not used, since not instantiated by the container.
+     */
     @Override
     public void initialize(Servlet servlet, ServletRequest request, ServletResponse response, String
             errorPageURL, boolean needsSession, int bufferSize, boolean autoFlush) throws IOException,
