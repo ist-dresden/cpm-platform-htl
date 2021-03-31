@@ -70,12 +70,6 @@
     </build>
     <dependencies>
 
-        <!-- Composum Core -->
-        <dependency>
-            <groupId>com.composum.sling.core</groupId>
-            <artifactId>composum-sling-core-commons</artifactId>
-        </dependency>
-
         <!-- Pages -->
         <dependency>
             <groupId>com.composum.pages</groupId>
