@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.composum.platform</groupId>
         <artifactId>cpm-platform-htl</artifactId>
-        <version>1.0.1-SNAPSHOT</version>
+        <version>1.1.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>cpm-platform-htl-bundle</artifactId>
@@ -40,7 +40,7 @@
                         <Export-Package>com.composum.platform.htl.*</Export-Package>
                         <Import-Package>org.apache.felix.shell;resolution:=optional,
                             javax.annotation.*;version="[0,4)",
-                            com.composum.sling.core.*;version="[1.11,3)",
+                            com.composum.sling.core.*;version="[2,4)",
                             org.apache.sling.scripting.sightly.render.*;version="[2.1,4)",
                             *</Import-Package>
                         <Embed-Dependency>*;scope=compile|runtime</Embed-Dependency>
