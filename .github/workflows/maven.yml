@@ -25,12 +25,9 @@ jobs:
         cache: maven
 
     - name: teststuff
-      run: pwd; ls; echo $HPSTEST; ls $HOME/.m2; cat $HOME/.m2/settings.xml
+      run: pwd; ls; echo Hpstestsecret - $HPSTEST; ls $HOME/.m2; cat $HOME/.m2/settings.xml; env | sort ; ls $RUNNER_TOOL_CACHE
       env:
         HPSTEST: ${{ secrets.HPSTESTSECRET }}
 
-    - name: testbuild2
-      run: mvn -s .github/.github.settings.xml -B package
-
     - name: Build with Maven
-      run: mvn -B package
+      run: mvn -s .github/github.settings.xml -B package
