@@ -107,5 +107,25 @@
                 <module>test</module>
             </modules>
         </profile>
+
+        <profile>
+            <!-- For some weird reason, com.day.jcr.vault:content-package-maven-plugin-parent:pom:0.0.24 is missing from
+              maven central, while the plugin itself is there. 8-( Thus we have to add this for the Github build to succeed. -->
+            <id>adobePublic</id>
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>adobe-public-releases</id>
+                    <name>Adobe Public Repository</name>
+                    <url>https://repo.adobe.com/nexus/content/groups/public</url>
+                    <releases>
+                        <enabled>true</enabled>
+                        <updatePolicy>never</updatePolicy>
+                    </releases>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>
     </profiles>
 </project>
