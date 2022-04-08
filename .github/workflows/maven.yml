@@ -25,30 +25,30 @@ jobs:
         cache: maven
 
 # https://docs.github.com/en/actions/learn-github-actions/contexts
-    - name: Dump GitHub context
-      id: github_context_step
-      run: echo '${{ toJSON(github) }}'
-    - name: Dump job context
-      run: echo '${{ toJSON(job) }}'
-    - name: Dump steps context
-      run: echo '${{ toJSON(steps) }}'
-    - name: Dump runner context
-      run: echo '${{ toJSON(runner) }}'
-    - name: Dump strategy context
-      run: echo '${{ toJSON(strategy) }}'
-    - name: Dump matrix context
-      run: echo '${{ toJSON(matrix) }}'
+#    - name: Dump GitHub context
+#      id: github_context_step
+#      run: echo '${{ toJSON(github) }}'
+#    - name: Dump job context
+#      run: echo '${{ toJSON(job) }}'
+#    - name: Dump steps context
+#      run: echo '${{ toJSON(steps) }}'
+#    - name: Dump runner context
+#      run: echo '${{ toJSON(runner) }}'
+#    - name: Dump strategy context
+#      run: echo '${{ toJSON(strategy) }}'
+#    - name: Dump matrix context
+#      run: echo '${{ toJSON(matrix) }}'
 
 # https://docs.github.com/en/actions/learn-github-actions/environment-variables
-    - name: teststuff
-      run: pwd; ls; echo Hpstestsecret - $HPSTEST; ls $HOME/.m2; cat $HOME/.m2/settings.xml; env | sort ; ls $RUNNER_TOOL_CACHE
-      env:
-        HPSTEST: ${{ secrets.HPSTESTSECRET }}
+#    - name: teststuff
+#      run: pwd; ls; echo Hpstestsecret - $HPSTEST; ls $HOME/.m2; cat $HOME/.m2/settings.xml; env | sort ; ls $RUNNER_TOOL_CACHE
+#      env:
+#        HPSTEST: ${{ secrets.HPSTESTSECRET }}
 
     - name: Build with Maven
       run: mvn -Ddeploy_password=$NEXUS_BUILD_PASSWD -s .travis.settings.xml -B verify
 
-    - name: Deploy with Maven
-      run: mvn -Ddeploy_password=$NEXUS_BUILD_PASSWD -s .travis.settings.xml -B deploy
-      env:
-        NEXUS_BUILD_PASSWD: ${{ secrets.NEXUS_BUILD_PASSWD }}
+#    - name: Deploy with Maven
+#      run: mvn -Ddeploy_password=$NEXUS_BUILD_PASSWD -s .travis.settings.xml -B deploy
+#      env:
+#        NEXUS_BUILD_PASSWD: ${{ secrets.NEXUS_BUILD_PASSWD }}
