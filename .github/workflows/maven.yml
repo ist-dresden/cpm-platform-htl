@@ -16,11 +16,21 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+# https://github.com/actions/setup-java , https://github.com/actions/setup-java/blob/main/docs/advanced-usage.md
     - name: Set up JDK 11
       uses: actions/setup-java@v3
       with:
         java-version: '11'
         distribution: 'temurin'
         cache: maven
-    - name: Build with Maven
+
+    - name: teststuff
+      run: pwd; ls; echo $HPSTEST; ls $HOME/.m2; cat $HOME/.m2/settings.xml
+      env:
+        HPSTEST: ${{ secrets.HPSTESTSECRET }}
+
+    - name: testbuild2
       run: mvn -s .github/.github.settings.xml -B package
+
+    - name: Build with Maven
+      run: mvn -B package
