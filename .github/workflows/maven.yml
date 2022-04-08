@@ -5,9 +5,9 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [ develop ]
+    branches: [ feature/githubbuild ]
   pull_request:
-    branches: [ develop ]
+    branches: [ feature/githubbuild ]
 
 jobs:
   build:
@@ -23,4 +23,4 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn -P adobePublic -B package --file pom.xml
+      run: mvn -s .github/.github.settings.xml -B package
