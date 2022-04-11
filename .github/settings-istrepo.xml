@@ -2,22 +2,23 @@
 <settings xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd"
         xmlns="http://maven.apache.org/SETTINGS/1.1.0"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <!-- Settings to build with IST repository and deploy to IST repository. -->
 
     <servers>
         <server>
             <id>istrepo</id>
-            <username>buildmgr</username>
-            <password>${deploy_password}</password>
+            <username>${env.NEXUS_BUILD_USER}</username>
+            <password>${env.NEXUS_BUILD_PASSWD}</password>
         </server>
         <server>
             <id>istrepo-internal</id>
-            <username>buildmgr</username>
-            <password>${deploy_password}</password>
+            <username>${env.NEXUS_BUILD_USER}</username>
+            <password>${env.NEXUS_BUILD_PASSWD}</password>
         </server>
         <server>
             <id>istrepo-snapshots</id>
-            <username>buildmgr</username>
-            <password>${deploy_password}</password>
+            <username>${env.NEXUS_BUILD_USER}</username>
+            <password>${env.NEXUS_BUILD_PASSWD}</password>
         </server>
     </servers>
 
@@ -52,7 +53,7 @@
                 <sling.host>test.composum.com</sling.host>
                 <sling.port>443</sling.port>
                 <sling.context></sling.context>
-                <sling.password>${deploy_password}</sling.password>
+                <sling.password>${env.NEXUS_BUILD_PASSWD}</sling.password>
             </properties>
         </profile>
 
