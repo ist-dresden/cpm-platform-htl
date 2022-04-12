@@ -20,6 +20,9 @@ jobs:
         distribution: 'temurin'
         # deliberately not, to check with central repo: cache: maven
 
+    - name: Check versioning
+      run: mvn -s .github/settings-public.xml org.apache.maven.plugins:maven-enforcer-plugin:3.0.0:enforce -Drules=requireReleaseVersion,requireReleaseDeps
+
     - name: Check build with Maven
       run: mvn -s .github/settings-public.xml -B verify
 
