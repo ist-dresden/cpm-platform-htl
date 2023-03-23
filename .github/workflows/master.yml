@@ -66,7 +66,6 @@ jobs:
       # for determining the right path for
       if: always()
       run: |
-        echo Repository name: ${{ github.repository.name }}
         find target/staging -type f -name index.html
 
     - name: Deploy Site
