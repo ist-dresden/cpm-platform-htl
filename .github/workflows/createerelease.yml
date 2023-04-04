@@ -165,7 +165,7 @@ jobs:
       run: |
         cd target/checkout
         pwd
-        $MVNCMD nexus-staging:release
+        $MVNCMD nexus-staging:release || (sleep 600; $MVNCMD nexus-staging:release) || (sleep 1200; $MVNCMD nexus-staging:release)
 
     - name: Drop from OSSRH on dryrun
       if: ${{ github.event.inputs.dryrun != 'false' }}
@@ -175,7 +175,7 @@ jobs:
       run: |
         cd target/checkout
         pwd
-        $MVNCMD nexus-staging:drop
+        $MVNCMD nexus-staging:drop || (sleep 600; $MVNCMD nexus-staging:drop) || (sleep 1200; $MVNCMD nexus-staging:drop)
 
     - name: List target files even if recipe fails
       if: always()
