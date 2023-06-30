@@ -1,6 +1,7 @@
 #
 # Will build a Java project with Maven, but NOT cache/restore any dependencies to check with central repo
 name: Master - Test public build and generate and deploy site
+run-name: Master - Test public build and generate and deploy site on ${{ github.ref_name }}
 
 on:
   push:
@@ -72,7 +73,7 @@ jobs:
       uses: JamesIves/github-pages-deploy-action@v4.3.0
       with:
         branch: gh-pages
-        # This path is different for the repositories - check!
-        folder: target/staging/.
+        # This path is different for the repositories - check
+        folder: target/staging
         git-config-name: ${{ vars.RELEASE_USERNAME  }}
         git-config-email: ${{ vars.RELEASE_USEREMAIL  }}
