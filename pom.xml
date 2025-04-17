@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.composum.platform</groupId>
         <artifactId>composum-platform</artifactId>
-        <version>1.7.0</version>
+        <version>1.7.2</version>
     </parent>
 
     <artifactId>cpm-platform-htl</artifactId>
@@ -17,8 +17,8 @@
     <description>Reactor for Platform HTL</description>
 
     <properties>
-        <composum.pages.version>1.5.1</composum.pages.version>
-        <composum.platform.version>1.7.0</composum.platform.version>
+        <composum.pages.version>1.5.4</composum.pages.version>
+        <composum.platform.version>1.7.2</composum.platform.version>
     </properties>
 
     <distributionManagement>
