@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd ">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd ">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
         <groupId>com.composum.platform</groupId>
         <artifactId>composum-platform</artifactId>
-        <version>1.5.0</version>
+        <version>1.7.2</version>
     </parent>
 
     <artifactId>cpm-platform-htl</artifactId>
-    <version>1.1.1</version>
+    <version>1.1.2</version>
     <packaging>pom</packaging>
 
     <name>Composum Platform HTL</name>
     <description>Reactor for Platform HTL</description>
 
     <properties>
-        <composum.pages.version>1.4.0</composum.pages.version>
-        <composum.platform.version>1.5.0</composum.platform.version>
+        <composum.pages.version>1.5.4</composum.pages.version>
+        <composum.platform.version>1.7.2</composum.platform.version>
     </properties>
 
     <distributionManagement>
@@ -77,15 +76,6 @@
                 <scope>provided</scope>
             </dependency>
 
-            <!-- TODO Temporary workaround for https://issues.apache.org/jira/browse/SLING-8576 . Once that's fixed this
-              should be removed. -->
-            <dependency>
-                <groupId>org.apache.sling</groupId>
-                <artifactId>org.apache.sling.scripting.core</artifactId>
-                <version>2.0.50</version>
-                <scope>test</scope>
-            </dependency>
-
         </dependencies>
     </dependencyManagement>
 
@@ -107,25 +97,9 @@
                 <module>test</module>
             </modules>
         </profile>
-
-        <profile>
-            <!-- For some weird reason, com.day.jcr.vault:content-package-maven-plugin-parent:pom:0.0.24 is missing from
-              maven central, while the plugin itself is there. 8-( Thus we have to add this for the Github build to succeed. -->
-            <id>adobePublic</id>
-            <pluginRepositories>
-                <pluginRepository>
-                    <id>adobe-public-releases</id>
-                    <name>Adobe Public Repository</name>
-                    <url>https://repo.adobe.com/nexus/content/groups/public</url>
-                    <releases>
-                        <enabled>true</enabled>
-                        <updatePolicy>never</updatePolicy>
-                    </releases>
-                    <snapshots>
-                        <enabled>false</enabled>
-                    </snapshots>
-                </pluginRepository>
-            </pluginRepositories>
-        </profile>
     </profiles>
+
+  <scm>
+    <tag>cpm-platform-htl-1.1.2</tag>
+  </scm>
 </project>
